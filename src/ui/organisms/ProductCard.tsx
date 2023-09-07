@@ -11,7 +11,7 @@ export function ProductCard({ product }: PropsType) {
 	const price = formatPrice(product.price / 100);
 
 	return (
-		<div key={product.id} className="group relative">
+		<li key={product.id} className="group relative">
 			<ProductCoverImage imageAlt={product.imageAlt} imageSrc={product.imageSrc} />
 			<ProductCardDescription
 				name={product.name}
@@ -19,6 +19,6 @@ export function ProductCard({ product }: PropsType) {
 				price={price}
 				href={product.href}
 			/>
-		</div>
+		</li>
 	);
 }

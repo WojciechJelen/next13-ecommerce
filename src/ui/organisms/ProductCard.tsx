@@ -1,15 +1,14 @@
 import { type ProductType } from "@/types";
 import { ProductCardDescription } from "@/ui/atoms/ProductCardDescription";
 import { ProductCoverImage } from "@/ui/atoms/ProductCoverImage";
+import { formatPrice } from "@/utils/formatPrice";
 
 type PropsType = {
 	product: ProductType;
 };
 
 export function ProductCard({ product }: PropsType) {
-	const price = new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(
-		product.price,
-	);
+	const price = formatPrice(product.price / 100);
 
 	return (
 		<div key={product.id} className="group relative">

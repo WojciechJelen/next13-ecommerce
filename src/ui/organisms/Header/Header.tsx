@@ -11,6 +11,7 @@ import {
 import { twMerge } from "tailwind-merge";
 import { MobileMenu } from "./MobileMenu";
 import { navigation } from "./headerData";
+import { ActiveLink } from "@/ui/atoms/ActiveLink";
 
 export function Header() {
 	const [open, setOpen] = useState(false);
@@ -162,13 +163,9 @@ export function Header() {
 									))}
 
 									{navigation.pages.map((page) => (
-										<a
-											key={page.name}
-											href={page.href}
-											className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
-										>
+										<ActiveLink key={page.name} href={page.href}>
 											{page.name}
-										</a>
+										</ActiveLink>
 									))}
 								</div>
 							</Popover.Group>

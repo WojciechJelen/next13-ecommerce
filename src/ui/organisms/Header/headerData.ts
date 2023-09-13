@@ -184,5 +184,6 @@ export const navigation = {
 	pages: [
 		{ name: "Company", href: "#" },
 		{ name: "Stores", href: "#" },
+		{ name: "All products", href: "/products" },
 	],
 } as const;

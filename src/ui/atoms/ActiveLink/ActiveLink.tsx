@@ -1,10 +1,9 @@
-import { type Url } from "next/dist/shared/lib/router/router";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { twMerge } from "tailwind-merge";
 
 type PropsType = {
-	href: Url;
+	href: string;
 	children: React.ReactNode;
 	className?: string;
 };
@@ -19,6 +18,8 @@ export const ActiveLink = ({ href, children, className }: PropsType) => {
 	);
 
 	return (
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		// @ts-ignore
 		<Link href={href} className={classes}>
 			{children}
 		</Link>

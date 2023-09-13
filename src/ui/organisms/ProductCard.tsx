@@ -17,7 +17,7 @@ export function ProductCard({ product }: PropsType) {
 				name={product.name}
 				color={product.color}
 				price={price}
-				href={product.href}
+				id={product.id}
 			/>
 		</li>
 	);

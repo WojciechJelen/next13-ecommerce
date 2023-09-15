@@ -22,6 +22,7 @@ export interface ProductType {
 	imageAlt: string;
 	price: number;
 	color: string;
+	description: string;
 }
 
 const productResponseItemToProductType = (product: ProductResponseItem): ProductType => ({
@@ -32,6 +33,7 @@ const productResponseItemToProductType = (product: ProductResponseItem): Product
 	imageAlt: product.title,
 	price: product.price,
 	color: "white",
+	description: product.description,
 });
 
 export const getProductsList = async (): Promise<ProductType[]> => {
@@ -46,6 +48,5 @@ export const getProductById = async (id: ProductType["id"]): Promise<ProductType
 	const response = await fetch(`https://naszsklep-api.vercel.app/api/products/${id}`);
 	const productResponse = (await response.json()) as ProductResponseItem;
 	const product = productResponseItemToProductType(productResponse);
-	console.log("#####", product);
 	return product;
 };

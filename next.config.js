@@ -1,18 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+	pageExtensions: ["ts", "tsx", "mdx"],
 	experimental: {
 		typedRoutes: true,
-	},
-	images: {
-		remotePatterns: [
-			{
-				protocol: "https",
-				hostname: "tailwindui.com",
-				port: "",
-				pathname: "/img/ecommerce-images/**",
-			},
-		],
+		mdxRs: true,
 	},
 };
 
-module.exports = nextConfig;
+const withMDX = require("@next/mdx")();
+module.exports = withMDX(nextConfig);

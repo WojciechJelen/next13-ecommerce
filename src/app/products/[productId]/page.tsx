@@ -1,5 +1,6 @@
 import { type Metadata } from "next";
 import { getProductById, getProductsList } from "@/api/products";
+import { ProductOverview } from "@/ui/organisms/ProductOverview/ProductOverview";
 
 export const generateStaticParams = async () => {
 	const productsIds = (await getProductsList()).map((product) => ({
@@ -38,8 +39,8 @@ export default async function ProductPage({ params }: { params: { productId: str
 	const product = await getProductById(params.productId);
 
 	return (
-		<main className="">
-			<section>{JSON.stringify(product)}</section>
+		<main>
+			<ProductOverview product={product} />
 		</main>
 	);
 }

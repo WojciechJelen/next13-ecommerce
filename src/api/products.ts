@@ -1,29 +1,4 @@
-export type ProductResponseItem = {
-	id: string;
-	title: string;
-	price: number;
-	description: string;
-	category: string;
-	rating: Rating;
-	image: string;
-	longDescription: string;
-};
-
-export interface Rating {
-	rate: number;
-	count: number;
-}
-
-export interface ProductType {
-	id: string;
-	name: string;
-	href: string;
-	imageSrc: string;
-	imageAlt: string;
-	price: number;
-	color: string;
-	description: string;
-}
+import { type ProductType, type ProductResponseItem } from "@/types";
 
 const productResponseItemToProductType = (product: ProductResponseItem): ProductType => ({
 	id: product.id,
@@ -34,10 +9,11 @@ const productResponseItemToProductType = (product: ProductResponseItem): Product
 	price: product.price,
 	color: "white",
 	description: product.description,
+	rating: product.rating,
 });
 
 export const getProductsList = async (): Promise<ProductType[]> => {
-	const response = await fetch("https://naszsklep-api.vercel.app/api/products");
+	const response = await fetch("https://naszsklep-api.vercel.app/api/products?take=20");
 	const productsResponse = (await response.json()) as ProductResponseItem[];
 	const products = productsResponse.map(productResponseItemToProductType);
 

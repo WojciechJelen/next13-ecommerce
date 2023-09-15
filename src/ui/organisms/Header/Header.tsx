@@ -163,7 +163,12 @@ export function Header() {
 									))}
 
 									{navigation.pages.map((page) => (
-										<ActiveLink key={page.name} href={page.href}>
+										<ActiveLink
+											key={page.name}
+											href={page.href}
+											className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
+											activeClassName="underline underline-offset-2"
+										>
 											{page.name}
 										</ActiveLink>
 									))}

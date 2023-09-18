@@ -1,7 +1,6 @@
 import { Fragment } from "react";
-import { Dialog, Tab, Transition } from "@headlessui/react";
+import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { twMerge } from "tailwind-merge";
 import { navigation } from "./headerData";
 
 type PropsType = {
@@ -46,87 +45,6 @@ export const MobileMenu = ({ open, setOpen }: PropsType) => {
 									<XMarkIcon className="h-6 w-6" aria-hidden="true" />
 								</button>
 							</div>
-
-							{/* Links */}
-							<Tab.Group as="div" className="mt-2">
-								<div className="border-b border-gray-200">
-									<Tab.List className="-mb-px flex space-x-8 px-4">
-										{navigation.categories.map((category) => (
-											<Tab
-												key={category.name}
-												className={({ selected }) =>
-													twMerge(
-														selected
-															? "border-indigo-600 text-indigo-600"
-															: "border-transparent text-gray-900",
-														"flex-1 whitespace-nowrap border-b-2 px-1 py-4 text-base font-medium",
-													)
-												}
-											>
-												{category.name}
-											</Tab>
-										))}
-									</Tab.List>
-								</div>
-								<Tab.Panels as={Fragment}>
-									{navigation.categories.map((category) => (
-										<Tab.Panel key={category.name} className="space-y-10 px-4 pb-8 pt-10">
-											<div className="space-y-4">
-												{category.featured.map((item, itemIdx) => (
-													<div
-														key={itemIdx}
-														className="aspect-h-1 aspect-w-1 group relative overflow-hidden rounded-md bg-gray-100"
-													>
-														<img
-															src={item.imageSrc}
-															alt={item.imageAlt}
-															className="object-cover object-center group-hover:opacity-75"
-														/>
-														<div className="flex flex-col justify-end">
-															<div className="bg-white bg-opacity-60 p-4 text-base sm:text-sm">
-																<a href={item.href} className="font-medium text-gray-900">
-																	<span className="absolute inset-0" aria-hidden="true" />
-																	{item.name}
-																</a>
-																<p aria-hidden="true" className="mt-0.5 text-gray-700 sm:mt-1">
-																	Shop now
-																</p>
-															</div>
-														</div>
-													</div>
-												))}
-											</div>
-											{category.sections.map((column, columnIdx) => (
-												<div key={columnIdx} className="space-y-10">
-													{column.map((section) => (
-														<div key={section.name}>
-															<p
-																id={`${category.id}-${section.id}-heading-mobile`}
-																className="font-medium text-gray-900"
-															>
-																{section.name}
-															</p>
-															<ul
-																role="list"
-																aria-labelledby={`${category.id}-${section.id}-heading-mobile`}
-																className="mt-6 flex flex-col space-y-6"
-															>
-																{section.items.map((item) => (
-																	<li key={item.name} className="flow-root">
-																		<a href={item.href} className="-m-2 block p-2 text-gray-500">
-																			{item.name}
-																		</a>
-																	</li>
-																))}
-															</ul>
-														</div>
-													))}
-												</div>
-											))}
-										</Tab.Panel>
-									))}
-								</Tab.Panels>
-							</Tab.Group>
 
 							<div className="space-y-6 border-t border-gray-200 px-4 py-6">
 								{navigation.pages.map((page) => (

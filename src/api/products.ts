@@ -12,8 +12,16 @@ const productResponseItemToProductType = (product: ProductResponseItem): Product
 	rating: product.rating,
 });
 
-export const getProductsList = async (): Promise<ProductType[]> => {
-	const response = await fetch("https://naszsklep-api.vercel.app/api/products?take=20");
+export const getProductsList = async ({
+	offset,
+	take = 20,
+}: { offset?: number; take?: number } = {}): Promise<ProductType[]> => {
+	const response = await fetch(
+		`https://naszsklep-api.vercel.app/api/products?take=${take}${
+			offset ? `&offset=${offset * take}` : ""
+		}`,
+	);
+
 	const productsResponse = (await response.json()) as ProductResponseItem[];
 	const products = productsResponse.map(productResponseItemToProductType);
 

@@ -89,7 +89,7 @@ export function Header() {
 																					key={item.name}
 																					className={twMerge(
 																						itemIdx === 0 ? "aspect-w-2 col-span-2" : "",
-																						"aspect-w-1 aspect-h-1 group relative overflow-hidden rounded-md bg-gray-100",
+																						"group aspect-h-1 aspect-w-1 relative overflow-hidden rounded-md bg-gray-100",
 																					)}
 																				>
 																					<img
@@ -168,6 +168,7 @@ export function Header() {
 											href={page.href}
 											className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
 											activeClassName="underline underline-offset-2"
+											exact
 										>
 											{page.name}
 										</ActiveLink>

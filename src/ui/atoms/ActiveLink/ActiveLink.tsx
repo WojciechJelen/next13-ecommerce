@@ -7,13 +7,15 @@ type PropsType = {
 	children: React.ReactNode;
 	className?: string;
 	activeClassName?: string;
+	exact?: boolean;
 } & LinkProps<RouteType>;
 
-export const ActiveLink = ({ href, children, className, activeClassName }: PropsType) => {
+export const ActiveLink = ({ href, children, exact, className, activeClassName }: PropsType) => {
 	const pathName = usePathname();
-	const isActive = pathName === href;
-	const classes = twMerge(className, isActive && activeClassName);
+	// eslint-disable-next-line @typescript-eslint/no-base-to-string
+	const isActive = exact ? pathName === href : pathName.startsWith(href.toString());
 
+	const classes = twMerge(className, isActive && activeClassName);
 	return (
 		<Link href={href} className={classes}>
 			{children}

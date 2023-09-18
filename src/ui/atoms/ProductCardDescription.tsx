@@ -12,7 +12,7 @@ export function ProductCardDescription({ name, color, id, price }: PropsType) {
 		<div className="mt-4 flex justify-between">
 			<div>
 				<h3 className="text-sm text-gray-700">
-					<Link href={`/products/${id}`}>
+					<Link href={`/product/${id}`}>
 						<span aria-hidden="true" className="absolute inset-0" />
 						{name}
 					</Link>

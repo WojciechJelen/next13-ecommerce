@@ -1,3 +1,5 @@
+import { executeGraphql } from "./executeGraphql";
+import { ProductsGetListDocument, type ProductsGetListQuery } from "@/gql/graphql";
 import { type ProductType, type ProductResponseItem } from "@/types";
 
 const productResponseItemToProductType = (product: ProductResponseItem): ProductType => ({
@@ -11,6 +13,11 @@ const productResponseItemToProductType = (product: ProductResponseItem): Product
 	description: product.description,
 	rating: product.rating,
 });
+
+export const getProductsGQL = async (): Promise<ProductsGetListQuery["products"]> => {
+	const queryResult = await executeGraphql(ProductsGetListDocument, {});
+	return queryResult.products;
+};
 
 export const getProductsList = async ({
 	offset,

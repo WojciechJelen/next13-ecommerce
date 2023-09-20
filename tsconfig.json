@@ -27,6 +27,13 @@
 			"@/ui/*": ["./src/ui/*"]
 		}
 	},
-	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "tailwind.config.ts"],
+	"include": [
+		"next-env.d.ts",
+		"**/*.ts",
+		"**/*.tsx",
+		".next/types/**/*.ts",
+		"tailwind.config.ts",
+		".graphqlrc.ts"
+	],
 	"exclude": ["node_modules"]
 }

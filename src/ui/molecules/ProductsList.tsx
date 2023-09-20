@@ -1,11 +1,13 @@
 import { ProductCard } from "../organisms/ProductCard";
+import { Pagination } from "./Pagination";
 import { type ProductType } from "@/types";
 
 type PropsType = {
 	products: ProductType[];
+	currentPage: number;
 };
 
-export function ProductsList({ products }: PropsType) {
+export function ProductsList({ products, currentPage = 1 }: PropsType) {
 	return (
 		<div className="bg-white" data-testid="products-list">
 			<div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
@@ -16,6 +18,7 @@ export function ProductsList({ products }: PropsType) {
 						<ProductCard product={product} key={product.id} />
 					))}
 				</ul>
+				<Pagination totalPages={8} currentPage={currentPage} className="mt-10" />
 			</div>
 		</div>
 	);

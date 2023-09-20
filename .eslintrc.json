@@ -18,6 +18,13 @@
 
 		// no let exports
 		"import/no-mutable-exports": "error",
+		"no-restricted-imports": [
+			"error",
+			{
+				"name": "next/router",
+				"message": "Please use `'next/navigation'` instead."
+			}
+		],
 
 		"import/no-cycle": "error",
 		"import/no-default-export": "error",

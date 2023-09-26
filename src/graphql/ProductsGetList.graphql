@@ -1,36 +1,5 @@
-fragment ProductListItem on Product {
-	id
-	name
-	reviews {
-		id
-		rating
-	}
-	description
-	categories(first: 1) {
-		name
-	}
-	images(first: 1) {
-		url
-	}
-	price
-}
-
 query ProductsGetList {
 	products(first: 10) {
 		...ProductListItem
-	}
-}
-
-query ProductGetById($id: ID!) {
-	product(where: { id: $id }) {
-		...ProductListItem
-	}
-}
-
-query ProductsGetByCategorySlug($slug: String!) {
-	categories(where: { slug: $slug }) {
-		products(first: 10) {
-			...ProductListItem
-		}
 	}
 }

@@ -2,6 +2,30 @@ query ProductsGetList {
 	products(first: 10) {
 		id
 		name
+		reviews {
+			id
+			rating
+		}
+
+		description
+		categories(first: 1) {
+			name
+		}
+		images(first: 1) {
+			url
+		}
+		price
+	}
+}
+
+query ProductGetById($id: ID!) {
+	product(where: { id: $id }) {
+		id
+		name
+		reviews {
+			id
+			rating
+		}
 		description
 		categories(first: 1) {
 			name

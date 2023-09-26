@@ -1,4 +1,5 @@
 import { type Metadata } from "next";
+import { notFound } from "next/navigation";
 import { getProductById, getProductsList } from "@/api/products";
 import { ProductOverview } from "@/ui/organisms/ProductOverview/ProductOverview";
 
@@ -16,6 +17,10 @@ export const generateMetadata = async ({
 }): Promise<Metadata> => {
 	const product = await getProductById(params.productId);
 
+	if (!product) {
+		return notFound();
+	}
+
 	return {
 		title: `${product.name} - Ecommerce Next`,
 		description: product.description,
@@ -24,7 +29,8 @@ export const generateMetadata = async ({
 			description: product.description,
 			images: [
 				{
-					url: product.imageSrc,
+					// FIXME: use different placeholder img
+					url: product.images[0]?.url || "https://via.placeholder.com/800x600",
 					// TODO: add width and height
 					width: 800,
 					height: 600,

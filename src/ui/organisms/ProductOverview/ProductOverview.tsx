@@ -1,16 +1,26 @@
-import { type ProductType } from "@/types";
+import { useMemo } from "react";
+import { type SingleProductType } from "@/types";
 import { ProductOverviewInfoSection } from "@/ui/molecules/ProductOverviewInfoSection";
 import { formatPrice } from "@/utils/formatPrice";
 import { ProductOverviewForm } from "@/ui/molecules/ProductOverviewForm";
 import { ProductOverviewImage } from "@/ui/atoms/ProductOverviewImage/ProductOverviewImage";
 
 type PropsType = {
-	product: ProductType;
+	product: NonNullable<SingleProductType>;
 };
 
 export function ProductOverview({ product }: PropsType) {
-	const { rating: productRating, description, price, imageAlt, imageSrc } = product;
-	const productPrice = formatPrice(price);
+	const { price, description, reviews, images } = product;
+	const productPrice = useMemo(() => formatPrice(price), [price]);
+
+	const calculateProductRating = () => {
+		const ratingsSum = reviews.reduce((acc, review) => acc + review.rating, 0);
+		return Math.round(ratingsSum / reviews.length);
+	};
+
+	const productRating = calculateProductRating();
+
+	const image = images[0];
 
 	return (
 		<div className="bg-white">
@@ -26,12 +36,15 @@ export function ProductOverview({ product }: PropsType) {
 					<ProductOverviewInfoSection
 						productPrice={productPrice}
 						productDescription={description}
-						productRating={productRating}
+						productRating={{
+							rate: productRating,
+							count: reviews.length,
+						}}
 					/>
 				</div>
 
 				<div className="mt-10 lg:col-start-2 lg:row-span-2 lg:mt-0 lg:self-center">
-					<ProductOverviewImage imageAlt={imageAlt} imageSrc={imageSrc} />
+					<ProductOverviewImage imageAlt={""} imageSrc={image?.url ?? ""} />
 				</div>
 
 				<div className="mt-10 lg:col-start-1 lg:row-start-2 lg:max-w-lg lg:self-start">

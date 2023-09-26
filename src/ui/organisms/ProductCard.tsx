@@ -1,10 +1,10 @@
-import { type ProductType } from "@/types";
+import { type SingleProductType } from "@/types";
 import { ProductCardDescription } from "@/ui/atoms/ProductCardDescription";
 import { ProductCoverImage } from "@/ui/atoms/ProductCoverImage";
 import { formatPrice } from "@/utils/formatPrice";
 
 type PropsType = {
-	product: ProductType;
+	product: NonNullable<SingleProductType>;
 };
 
 export function ProductCard({ product }: PropsType) {
@@ -12,13 +12,9 @@ export function ProductCard({ product }: PropsType) {
 
 	return (
 		<li key={product.id} className="group relative">
-			<ProductCoverImage imageAlt={product.imageAlt} imageSrc={product.imageSrc} />
-			<ProductCardDescription
-				name={product.name}
-				color={product.color}
-				price={price}
-				id={product.id}
-			/>
+			{/** TODO: fix images later */}
+			<ProductCoverImage imageAlt={""} imageSrc={product.images[0]?.url ?? "#"} />
+			<ProductCardDescription name={product.name} color={"white"} price={price} id={product.id} />
 		</li>
 	);
 }

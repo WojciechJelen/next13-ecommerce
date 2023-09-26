@@ -1,9 +1,9 @@
 import { ProductCard } from "../organisms/ProductCard";
 import { Pagination } from "./Pagination";
-import { type ProductType } from "@/types";
+import { type SingleProductType } from "@/types";
 
 type PropsType = {
-	products: ProductType[];
+	products: NonNullable<SingleProductType>[];
 	currentPage: number;
 };
 

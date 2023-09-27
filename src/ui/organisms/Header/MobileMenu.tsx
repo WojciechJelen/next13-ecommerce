@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
+import NextImage from "next/image";
 import { navigation } from "./headerData";
 
 type PropsType = {
@@ -58,10 +59,12 @@ export const MobileMenu = ({ open, setOpen }: PropsType) => {
 
 							<div className="border-t border-gray-200 px-4 py-6">
 								<a href="#" className="-m-2 flex items-center p-2">
-									<img
+									<NextImage
 										src="https://tailwindui.com/img/flags/flag-canada.svg"
 										alt=""
 										className="block h-auto w-5 flex-shrink-0"
+										width={20}
+										height={20}
 									/>
 									<span className="ml-3 block text-base font-medium text-gray-900">CAD</span>
 									<span className="sr-only">, change currency</span>

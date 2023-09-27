@@ -1,3 +1,4 @@
+import NextImage from "next/image";
 import { navigation } from "./footerNavigationData";
 
 export function Footer() {
@@ -9,8 +10,9 @@ export function Footer() {
 			<div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
 				<div className="xl:grid xl:grid-cols-3 xl:gap-8">
 					<div className="space-y-8">
-						<img
-							className="h-7"
+						<NextImage
+							width={28}
+							height={28}
 							src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
 							alt="Company name"
 						/>

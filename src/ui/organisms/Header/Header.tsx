@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { Popover } from "@headlessui/react";
+import NextImage from "next/image";
+
 import {
 	Bars3Icon,
 	MagnifyingGlassIcon,
@@ -58,7 +60,9 @@ export function Header() {
 							{/* Logo */}
 							<a href="#" className="flex">
 								<span className="sr-only">Your Company</span>
-								<img
+								<NextImage
+									width={32}
+									height={32}
 									className="h-8 w-auto"
 									src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
 									alt=""
@@ -70,7 +74,9 @@ export function Header() {
 									href="#"
 									className="hidden text-gray-700 hover:text-gray-800 lg:flex lg:items-center"
 								>
-									<img
+									<NextImage
+										width={20}
+										height={20}
 										src="https://tailwindui.com/img/flags/flag-canada.svg"
 										alt=""
 										className="block h-auto w-5 flex-shrink-0"

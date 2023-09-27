@@ -19,6 +19,19 @@ const nextConfig = {
 			},
 		];
 	},
+	images: {
+		dangerouslyAllowSVG: true,
+		remotePatterns: [
+			{
+				protocol: "https",
+				hostname: "media.graphassets.com",
+			},
+			{
+				protocol: "https",
+				hostname: "tailwindui.com",
+			},
+		],
+	},
 	pageExtensions: ["ts", "tsx", "mdx"],
 	experimental: {
 		typedRoutes: true,

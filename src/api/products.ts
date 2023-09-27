@@ -1,5 +1,9 @@
 import { executeGraphql } from "./executeGraphql";
-import { ProductGetByIdDocument, ProductsGetListDocument } from "@/gql/graphql";
+import {
+	ProductGetByIdDocument,
+	ProductsGetByCategorySlugDocument,
+	ProductsGetListDocument,
+} from "@/gql/graphql";
 import { type ProductsType, type SingleProductType } from "@/types";
 
 export const getProductsList = async (): Promise<ProductsType> => {
@@ -12,4 +16,12 @@ export const getProductById = async (id: string): Promise<SingleProductType> => 
 	const product = queryResult?.product;
 
 	return product;
+};
+
+export const getProductsByCategory = async (category_slug: string) => {
+	const queryResult = await executeGraphql(ProductsGetByCategorySlugDocument, {
+		slug: category_slug,
+	});
+
+	return queryResult.categories[0]?.products;
 };

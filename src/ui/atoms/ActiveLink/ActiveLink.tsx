@@ -3,7 +3,7 @@ import Link, { type LinkProps } from "next/link";
 import { usePathname } from "next/navigation";
 import { twMerge } from "tailwind-merge";
 
-type PropsType<T extends string> = {
+export type PropsType<T extends string> = {
 	href: Route<T> | URL;
 	children: React.ReactNode;
 	className?: string;

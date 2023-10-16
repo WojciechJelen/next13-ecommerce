@@ -5,9 +5,10 @@ import { type SingleProductType } from "@/types";
 type PropsType = {
 	products: NonNullable<SingleProductType>[];
 	currentPage: number;
+	category: string;
 };
 
-export function ProductsList({ products, currentPage = 1 }: PropsType) {
+export function ProductsList({ products, currentPage = 1, category }: PropsType) {
 	return (
 		<div className="bg-white" data-testid="products-list">
 			<div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
@@ -18,7 +19,12 @@ export function ProductsList({ products, currentPage = 1 }: PropsType) {
 						<ProductCard product={product} key={product.id} />
 					))}
 				</ul>
-				<Pagination totalPages={8} currentPage={currentPage} className="mt-10" />
+				<Pagination
+					totalPages={8}
+					category={category}
+					currentPage={currentPage}
+					className="mt-10"
+				/>
 			</div>
 		</div>
 	);

@@ -1,11 +1,15 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Montserrat } from "next/font/google";
 
 import { Header } from "@/ui/organisms/Header/Header";
 import { Footer } from "@/ui/organisms/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
+const montserrat = Montserrat({
+	subsets: ["latin", "latin-ext"],
+	variable: "--font-montserrat",
+	display: "swap",
+});
 
 export const metadata: Metadata = {
 	title: "ecommerce",
@@ -15,7 +19,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang="en">
-			<body className={inter.className}>
+			<body className={montserrat.className}>
 				<Header />
 				{children}
 				<Footer />

@@ -19,7 +19,10 @@ export function ActiveLink<T extends string>({
 	className,
 }: PropsType<T>) {
 	const pathName = usePathname();
-	const isActive = exact ? pathName === href : pathName.startsWith(href.toString());
+	// if exact is true, then we need to check if the pathName is equal to href
+	// if exact is false, then we need to check if the pathName starts with href
+	// TODO:
+	const isActive = exact ? pathName === href : pathName.startsWith(href as string);
 	const classes = twMerge(className, isActive && activeClassName);
 
 	return (

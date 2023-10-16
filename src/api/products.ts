@@ -1,4 +1,5 @@
 import { executeGraphql } from "./executeGraphql";
+
 import {
 	ProductGetByIdDocument,
 	ProductsGetByCategorySlugDocument,

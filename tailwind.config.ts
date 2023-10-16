@@ -7,7 +7,13 @@ const config: Config = {
 		"./src/ui/**/*.{js,ts,jsx,tsx,mdx}",
 		"./src/app/**/*.{js,ts,jsx,tsx,mdx}",
 	],
-	theme: {},
+	theme: {
+		extend: {
+			fontFamily: {
+				serif: ["var(--font-montserrat)"],
+			},
+		},
+	},
 	plugins: [require("@tailwindcss/typography"), require("@tailwindcss/aspect-ratio")],
 };
 export default config;
